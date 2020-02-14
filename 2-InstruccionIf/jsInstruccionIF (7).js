@@ -4,14 +4,13 @@ function mostrar()
     var estado
     edad = document.getElementById("edad").value
     estado = document.getElementById("estadoCivil").value
-    if (edad < 18)
+    if (edad < 18 && estado != "Soltero")
     {
-        if (estado != "Soltero")
-        {
-            alert("Es muy pequeño para NO ser soltero.")
-        }
+    
+        alert("Es muy pequeño para NO ser soltero.");
+        
     }
 	
 
 
-}//FIN DE LA FUNCIÓN
+}//FIN DE LA FUNCIÓN    
