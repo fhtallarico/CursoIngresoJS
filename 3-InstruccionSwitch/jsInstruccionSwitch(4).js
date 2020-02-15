@@ -29,7 +29,6 @@ switch (mesDelAño) {
     }
     default :{
         alert (dias31);
-        break;
     }
 }
 
