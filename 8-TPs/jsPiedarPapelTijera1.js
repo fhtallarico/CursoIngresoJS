@@ -8,22 +8,61 @@ var eleccionMaquina;
 
 function comenzar()
 {
-	
+    eleccionMaquina = parseInt(Math.floor(Math.random () * (3 - 1 + 1) + 1));
+    console.log ("eleccionMaquina: " + eleccionMaquina);
 
 
 }//FIN DE LA FUNCIÓN
 function piedra()
 {
-	
+	switch (eleccionMaquina) {
+        case 1: {
+            alert("Empate!");
+            break;
+        }
+        case 3: {
+            alert ("Ganaste!!");
+            break;
+        }
+        case 2: {
+            alert (" Perdiste.");
+            break;
+        }
+    }
 
 }//FIN DE LA FUNCIÓN
 function papel()
 {
-
-
+    switch (eleccionMaquina) {
+        case 2: {
+            alert("Empate!");
+            break;
+        }
+        case 1: {
+            alert ("Ganaste!!");
+            break;
+        }
+        case 3: {
+            alert (" Perdiste.");
+            break;
+        }
+    }
 }//FIN DE LA FUNCIÓN
 function tijera()
 {
-	
+	switch (eleccionMaquina) {
+        case 3: {
+            alert("Empate!");
+            break;
+        }
+        case 2: {
+            alert ("Ganaste!!");
+            break;
+        }
+        case 1: {
+            alert (" Perdiste.");
+            break;
+        }
+    }
 
 }//FIN DE LA FUNCIÓN
