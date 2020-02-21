@@ -3,13 +3,15 @@ function mostrar()
 
 	var contador=0;
 	var acumulador=0;
-	var respuesta='si';
+	var respuesta='s';
 	var numero
 
-	while (contador >= 0) {
+	while (respuesta == "s") {
 		numero = parseFloat(prompt ("Ingrese un numero"));
 		acumulador = acumulador + numero;
-		contador = contador + 1;	
+		contador = contador + 1;
+		respuesta = prompt ("Quiere ingresar otro número?");
+
 	}
 
 document.getElementById('suma').value=acumulador;
