@@ -10,8 +10,8 @@ function mostrar()
 	var ccero = 0;
 	var cpares = 0;
 	var cimpar = 0;
-	var prompos;
-	var promneg;
+	var prompos = 0;
+	var promneg = 0;
 	var diferencia;
 	
 	var respuesta="s";
@@ -33,7 +33,7 @@ function mostrar()
 		else {
 			ccero ++;
 		}
-		if ((num % 2) == 0){
+		if (num % 2 == 0){
 			cpares ++;
 		}
 		else {
@@ -43,15 +43,19 @@ function mostrar()
 		respuesta = prompt ("Desea ingresa otro numero?.")
 	
 	}
-	prompos = pos / cpos;
-	promneg = neg / cneg;
-	diferencia = pos - neg;
+	if (cpos != 0){ 
+		prompos = pos / cpos;
+	}
+	if (cneg != 0) {
+		promneg = neg / cneg;
+	}
+	
+	diferencia = cpos - cneg;
 document.write("Suma de positivos = " + pos + "</br>");
 document.write("Suma de negativos = " + neg + "</br>");
 document.write("Conteo de nros. positivos = " + cpos + "</br>");
 document.write("Conteo de nros. negativos = " + cneg + "</br>");
 document.write("Conteo de nros. pares = " + cpares + "</br>");
-document.write("Conteo de nros. impares = " + cimpar + "</br>");
 document.write("Conteo de ceros = " + ccero + "</br>");
 document.write("Promedio de nros. positivos = " + prompos + "</br>"); 
 document.write("Promedio de nros. negativos = " + promneg + "</br>");

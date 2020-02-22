@@ -12,37 +12,55 @@ function CalcularPrecio ()
 {
      var cantidad = parseInt(document.getElementById("Cantidad").value);
      var marca = document.getElementById("Marca").value;
-     if (cantidad >= 6) {
-         document.getElementById("precioDescuento").value = (35 * 0.5) * cantidad;
-     }
-     else if (cantidad == 5 && marca == "ArgentinaLuz") {
-        document.getElementById("precioDescuento").value = (35 * 0.6) * cantidad;
-     } 
-     else if (cantidad == 4 ) {
-         if (marca == "ArgentinaLuz" || marca == "FelipeLamparas") { 
-            document.getElementById("precioDescuento").value = (35 * 0.75) * cantidad;
+     var descuento
+     var preciofinal
+     var iibb
+     switch (cantidad) {
+         case 1:
+         case 2: {
+               descuento = 0.0;
+             break;
+         }  
+         case 3: {
+            if (marca == "ArgentinaLuz") {
+               descuento = 0.15;
+            }
+            else if (marca == "FelipeLamparas") {
+               descuento = 0.10;
+            }
+            else {
+               descuento = 0.05;
+            }
+            break;
          }
-         else {
-            document.getElementById("precioDescuento").value = (35 * 0.8) * cantidad;
-         }
+         case 4: {
+            if (marca == "ArgentinaLuz" || marca == "FelipeLamparas") {
+               descuento = 0.25;
+             }
+            else {
+               descuento = 0.20;
+             }
+            break;
+          }
+         case 5: {
+            if (marca == "ArgentinaLuz") {
+               descuento = 0.40;
+            }
+            else {
+               descuento = 0.30;
+            }
+            break;
+        }
+         default: {
+            descuento = 0.50;
+        }
      }
-     else if (cantidad == 3) {
-         if (marca == "ArgentinaLuz") {
-            document.getElementById("precioDescuento").value = (35 * 0.85) * cantidad;
-         }
-         else if (marca == "FelipeLamparas") {
-            document.getElementById("precioDescuento").value = (35 * 0.9) * cantidad;
-         }
-         else {
-            document.getElementById("precioDescuento").value = (35 * 0.95) * cantidad;
-         }
+     preciofinal = (cantidad * 35) - ((cantidad * 35)*descuento);
+     if (preciofinal > 120) {
+        iibb = preciofinal * 0.10;
+        preciofinal = preciofinal + iibb;
+        alert ("Usted pagó $" + iibb + " de iibb.");
      }
-     else {
-        document.getElementById("precioDescuento").value = 35 * cantidad;
-     }
-     if (document.getElementById("precioDescuento").value >= 120) {
-         var iibb = document.getElementById("precioDescuento").value * 0.10;
-        document.getElementById("precioDescuento").value = document.getElementById("precioDescuento").value * 1.10
-        alert ("Usted pagó " + iibb + " de IIBB.")
-     }
+   document.getElementById("precioDescuento").value = preciofinal;
+     
 }
