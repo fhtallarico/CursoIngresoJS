@@ -1,58 +1,80 @@
 function mostrar()
 {
-    var marca;
-    var peso;
-    var temperatura;
-    var temperaturaPar = 0;
-    var marcaPesado = "sin datos.";
-    var cantidadCeroGrados = 0;
-    var contadorPeso = 0;
-    var acumuladorPeso = 0;
-    var promedioPeso;
-    var pesoMax;
-    var pesoMaxSobre0;
-    var pesoMin;
-    var flag = 0;
+    var nombre;
+    var edad;
+    var sexo;
+    var estadoCivil;
+    var nombreHomCasJov;
+    var edadHomCasJov = 99;
+    var sexoViejo;
+    var edadViejo;
+    var nombreViejo;
+    var contadorMujeresCasadas = 0;
+    var contadorMujeres = 0;
+    var acumuladorMujeres = 0;
+    var promedioMujeres = "No ingresaron mujeres";
+    var contadorHombresSolteros = 0;
+    var acumuladorHombresSolteros = 0;
+    var promedioHombres = "No ingresaron hombres solteros.";
     var respuesta;
+    var flag = 0;
+    var flag1 =0;
 
     do {
-        marca = prompt("Ingrese una marca.");
-        peso = parseInt(prompt("Ingrese un peso.","Entre 1 y 100."));
-        while (!(peso >= 1 && peso <= 100)) {
-            peso = parseInt(prompt("Ingrese un peso entre 1 y 100"));
+        nombre = prompt("Ingrese el nombre del pasajero.");
+        edad = parseInt(prompt("Ingrese la edad del pasajero."));
+        while (!(edad >= 18)) {
+            edad = parseInt(prompt("Edad invalida. Ingrese una edad mayor a 18 años."));
         }
-        temperatura = parseInt (prompt("Ingrese una temperatura." , "Entre -30 y 30"));
-        while (!(temperatura >= -30 && temperatura <= 30)) {
-            temperatura = parseInt(prompt("Ingrese una temperatura entre -30 y 30"));
+        sexo = prompt("Ingrese el sexo del pasajero.");
+        while (!(sexo == "f" || sexo == "m")) {
+            sexo = prompt("Sexo invalido. Ingrese un sexo f o m.")
         }
-        if (temperatura % 2 == 0){
-            temperaturaPar ++;
+        estadoCivil = prompt("Ingrese el estado civil del pasajero.");
+        while (!(estadoCivil == "soltero" || estadoCivil == "casado" || estadoCivil == "viudo")) {
+            estadoCivil = prompt("Estado civil invalido. Ingrese un estado civil que sea soltero, casado o viudo.");
         }
-        if ((contadorPeso == 0 || peso > pesoMaxSobre0) && temperatura > 0) {
-            pesoMax = peso;
-            marcaPesado = marca;
+        console.log("nombre " + nombre)
+        console.log("edad " + edad)
+        console.log("sexo " + sexo)
+        console.log("estadoCivil " + estadoCivil)
+        if ((flag1 == 0 && sexo == "m" && estadoCivil == "casado") || (sexo == "m" && estadoCivil == "casado" && edad <= edadHomCasJov)) {
+            edadHomCasJov = edad;
+            nombreHomCasJov = nombre;
+            flag1 = 1;
         }
-        if (flag == 0 || peso > pesoMax) {
-            pesoMax = peso;
-        }
-        if (flag == 0 || peso < pesoMin) {
-            pesoMin = peso;
+        if (flag == 0 || edad > edadViejo) {
+            edadViejo = edad;
+            sexoViejo = sexo;
+            nombreViejo = nombre;
             flag = 1;
         }
-        if (temperatura < 0) {
-            cantidadCeroGrados ++;
+        if (sexo == "f" && (estadoCivil == "casado" || estadoCivil == "viudo")) {
+            contadorMujeresCasadas ++;
         }
-        contadorPeso ++;
-        acumuladorPeso += peso;
-        respuesta = prompt ("Desea ingresar mas datos?.","s o n");
-    } while (respuesta == "s")
-    if (contadorPeso != 0) {
-        promedioPeso = acumuladorPeso / contadorPeso;
+        if (sexo == "f") {
+            contadorMujeres ++;
+            acumuladorMujeres += edad;
+        }
+        if (sexo == "m" && estadoCivil == "soltero") {
+            contadorHombresSolteros ++;
+            acumuladorHombresSolteros += edad;
+        }
+        respuesta = prompt("Desea ingresar los datos de otro pasajero?", "s o n");
+
+    } while (respuesta != "n") ;
+    if (contadorMujeres > 0) {
+        promedioMujeres = acumuladorMujeres / contadorMujeres;
     }
-    document.write ("a) La cantidad de temperaturas pares es: " + temperaturaPar + "</br>");
-    document.write ("b) La marca del producto mas pesado no congelado es: " + marcaPesado + "</br>");
-    document.write ("c) La cantidad de productos qie se conservan a menos de 0 grados es de: " + cantidadCeroGrados + "</br>");
-    document.write ("d) El promedio del peso de todos los productos es: " + promedioPeso + "</br>");
-    document.write ("e) El peso maximo es: " + pesoMax + "</br>");
-    document.write ("f) El peso minimo es: " + pesoMin + "</br>");
+    if (contadorHombresSolteros > 0) {
+        promedioHombres = acumuladorHombresSolteros / contadorHombresSolteros;
+    }
+    console.log ("a) " + nombreHomCasJov)
+    console.log ("b) " + sexoViejo + " " + nombreViejo)
+    console.log ("c) " + contadorMujeresCasadas)
+    console.log ("d) " + promedioMujeres)
+    console.log ("e) " + promedioHombres)
+    
+
+
 }
